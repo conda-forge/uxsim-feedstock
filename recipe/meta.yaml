@@ -1,13 +1,13 @@
 {% set name = "uxsim" %}
-{% set version = "1.7.0" %}
+{% set version = "1.7.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/uxsim-{{ version }}.tar.gz
-  sha256: c496a3cf81ca6f3f325745318359a85e10ea57c43d19df1f81e9d1b3e1e87b3b
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/uxsim-{{ version }}.tar.gz
+  sha256: f624109bc19eb8b2a7c0b165f5e8234c9c8d2366efcb0cb819765a5eda1b0547
 
 build:
   noarch: python
@@ -16,11 +16,11 @@ build:
 
 requirements:
   host:
-    - python >=3.9
+    - python {{ python_min }}
     - setuptools >=63.0
     - pip
   run:
-    - python >=3.9
+    - python >={{ python_min }}
     - numpy >=1.21.5
     - matplotlib-base >=3.5.2
     - pillow >=9.2.0
@@ -37,6 +37,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/toruseo/UXsim
