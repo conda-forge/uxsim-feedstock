@@ -1,5 +1,5 @@
 {% set name = "uxsim" %}
-{% set version = "1.7.4" %}
+{% set version = "1.7.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/uxsim-{{ version }}.tar.gz
-  sha256: e118b747383c54ffb144e71777843f137718b618d8502c3ee9826108ee50323b
+  sha256: d0e90d37cc649b72e497ebfac358cf2533efd4d0a9815cdfe8329ab4a38f916a
 
 build:
   noarch: python
