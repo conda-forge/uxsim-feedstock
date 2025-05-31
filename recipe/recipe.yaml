@@ -1,0 +1,54 @@
+schema_version: 1
+
+context:
+  name: uxsim
+  version: 1.8.0
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/uxsim-${{ version }}.tar.gz
+  sha256: cdbac01eff18825a22018fe5d941c5f0db9af79765bd908621a70e981ed03407
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools >=63.0
+    - wheel
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - numpy >=1.21.5
+    - matplotlib-base >=3.5.2
+    - pillow >=9.2.0
+    - tqdm >=4.64.1
+    - scipy >=1.9.1
+    - pandas >=1.4.4
+    - pyqt >=5.15.7
+    - dill >=0.3.8
+    - networkx >=3.2.1
+
+tests:
+  - python:
+      imports:
+        - uxsim
+      pip_check: true
+      python_version: ${{ python_min }}.*
+
+about:
+  summary: Vehicular traffic flow simulator in road network, written in pure Python
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/toruseo/UXsim
+  documentation: https://toruseo.jp/UXsim/docs/index.html
+
+extra:
+  recipe-maintainers:
+    - thewchan
