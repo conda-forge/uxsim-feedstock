@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: uxsim
-  version: "1.10.0"
+  version: "1.10.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/uxsim-${{ version }}.tar.gz
-  sha256: 42129963bcdf2e1ed74ddecc8121d66ccda0a2faf6f2e01659809ac5a86fe59f
+  sha256: bae8163abd55be293234e0674d35578d740e2a70f08999f26a4c3879d52a52f6
 
 build:
   number: 0
