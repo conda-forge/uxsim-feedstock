@@ -32,7 +32,7 @@ requirements:
     - scipy >=1.9.1
     - pandas >=1.4.4
     - pyqt >=5.15.7
-    - dill >=0.3.8
+    - dill >=0.3.9
     - networkx >=3.2.1
 
 tests:
