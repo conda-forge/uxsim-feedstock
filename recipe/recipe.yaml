@@ -40,7 +40,9 @@ tests:
       imports:
         - uxsim
       pip_check: true
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
 
 about:
   summary: Vehicular traffic flow simulator in road network, written in pure Python
