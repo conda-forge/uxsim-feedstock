@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: uxsim
-  version: "1.13.0"
+  version: "1.14.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,21 +10,27 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/uxsim-${{ version }}.tar.gz
-  sha256: 2a622eca69743741a6169058eb1585a51215896d2ba187bf6e507c1cf640ba5d
+  sha256: 65ce6a3b77191d4abe48d07bf03535892b9171a7961d96347665ed706682e17d
 
 build:
   number: 0
-  noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
+  build:
+    - ${{ stdlib("c") }}
+    - ${{ compiler("cxx") }}
+    - cmake
+    - if: win
+      then: ninja
+      else: make
   host:
-    - python ${{ python_min }}.*
-    - setuptools >=63.0
-    - wheel
+    - python
+    - scikit-build-core >=0.9
+    - nanobind
     - pip
   run:
-    - python >=${{ python_min }}
+    - python
     - numpy >=1.21.5
     - matplotlib-base >=3.5.2
     - pillow >=9.2.0
@@ -40,9 +46,6 @@ tests:
       imports:
         - uxsim
       pip_check: true
-      python_version:
-        - ${{ python_min }}.*
-        - "*"
 
 about:
   summary: Vehicular traffic flow simulator in road network, written in pure Python
